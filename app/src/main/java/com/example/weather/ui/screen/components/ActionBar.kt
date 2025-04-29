@@ -40,42 +40,11 @@ fun ActionBar(
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        ControlButton()
         LocationInfo(
             modifier = Modifier.padding(top = 10.dp),
             location = state.title
         )
         ProfileButton()
-    }
-}
-
-@Composable
-private fun ControlButton(
-    modifier: Modifier = Modifier
-) {
-    Surface(
-        color = ColorSurface,
-        shape = CircleShape,
-        modifier = modifier
-            .size(48.dp)
-            .customShadow(
-                color = Color.Black,
-                alpha = 0.15f,
-                shadowRadius = 16.dp,
-                borderRadius = 48.dp,
-                offsetY = 4.dp
-            ),
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_control),
-                contentDescription = null,
-                modifier = Modifier.size(20.dp)
-            )
-        }
     }
 }
 
