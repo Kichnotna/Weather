@@ -1,7 +1,9 @@
 package com.example.weather.ui.screen.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -52,6 +55,8 @@ fun ActionBar(
 private fun ProfileButton(
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .size(48.dp)
@@ -67,6 +72,11 @@ private fun ProfileButton(
                 borderRadius = 48.dp,
                 offsetY = 6.dp
             )
+            .clickable {
+                Toast
+                    .makeText(context, "Профиль нажат", Toast.LENGTH_SHORT)
+                    .show()
+            }
     ) {
         Image(
             painter = painterResource(id = R.drawable.img_avatar),
@@ -83,8 +93,18 @@ private fun LocationInfo(
     modifier: Modifier = Modifier,
     location: String
 ) {
+    val context = LocalContext.current
+
     Column(
-        modifier = modifier,
+        modifier = modifier.clickable {
+            Toast
+                .makeText(
+                    context,
+                    "Астрологи объявили неделю отпуска - изменению не подлежит!",
+                    Toast.LENGTH_SHORT
+                )
+                .show()
+        },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {

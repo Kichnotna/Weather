@@ -1,5 +1,6 @@
 package com.example.weather.ui.screen.components
 
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -102,8 +104,19 @@ private fun WeatherForecastHeader(
 private fun ActionText(
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+
     Row(
-        modifier = modifier,
+        modifier = modifier
+            .clickable {
+                Toast
+                    .makeText(
+                        context,
+                        "Здесь могла быть ваша реклама или прогноз на следующий месяц, но...",
+                        Toast.LENGTH_SHORT
+                    )
+                    .show()
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
